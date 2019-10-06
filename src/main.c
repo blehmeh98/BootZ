@@ -13,13 +13,13 @@ int main()
 
   printf("Hello world!\n");
  
-  const int screenWidth = 1920;
-  const int screenHeight = 1080;
+  const int screenWidth = 800;
+  const int screenHeight = 600;
   InitWindow(screenWidth, screenHeight, "BootZ");
-  SetTargetFPS(144);
+  //SetTargetFPS(144);
   
   player masterson;
-  masterson.being.position = (Vector2){1000, 500};
+  masterson.being.position = (Vector2){screenWidth/2, screenHeight/2};
   masterson.being.acceleration = (Vector2){0, 0};
   masterson.being.velocity = (Vector2){0, 0};
   masterson.being.direction = 0.0;
@@ -52,12 +52,20 @@ int main()
 
     
     UpdatePlayer(&masterson, deltaTime);
+    int textSize = (screenWidth * screenHeight)/(10*(screenWidth+screenHeight));
     
     BeginDrawing();
       //background
       ClearBackground(RAYWHITE);
       
-      DrawText("Welcome to BootZ.", 500, 500, 100, LIGHTGRAY);
+      
+      DrawText("Welcome to BootZ.", 20, 20, textSize, LIGHTGRAY);
+      
+      char tempstr[36];
+      sprintf(tempstr, "FPS: %d", GetFPS());
+      
+      
+      DrawText(tempstr, 20, 20 + textSize, textSize, LIGHTGRAY);
       
       //masterson
       DrawCircle(masterson.being.position.x, masterson.being.position.y, 25, ORANGE);
