@@ -11,6 +11,11 @@ I was watching Shaun Of The Dead the other day when I saw the scene where the mi
 
 I don't want to portray a world after it all hits the fan. I want to portray a world where it's hitting the fan and you're taking cover and grabbing a mop and bucket before the smell drives everyone out of the room.
 
+## The name
+I was thinking of the phrase "Boots on the ground" when I imagined armies of soldiers kicking in doors and riddling zombies with bullets, so I coined "BootZ". You can guess what the Z is for after reading this far. If you can't, I don't know what to tell you.
+It's a working project title. I was thinking something a little longer, like "Steel-Toed-BootZ" or "BootZ on the Ground" or something, for when I actually have something I can respectfully call a game. "BootZ" will do for now.
+You can pronouce it "Boots" if you want, or "Boot-Zee", like the Z in "DayZ". I recommend the latter to make this game distinct from the word "Boots" if you want to spread the word to friends some day.
+
 ## Current features
 Nothing. Like, I have a prototype of an orange circle on a white background that you can move with the arrow keys. 
 
@@ -20,7 +25,7 @@ Nothing. Like, I have a prototype of an orange circle on a white background that
 - A small map, but with a scrolling screen that follows the player
 - Basic environmental collision
 - 50 zombies, give or take
-- A basic vision mechanic that prevents you from seeing around corners.
+- A basic vision mechanic that prevents you from seeing around corners. I want to keep some horror aspects of the whole zombie thing to keep players on their toes.
 - Crude graphics
 - Punchy feeling gameplay, a focus on player agility and firepower, but not both at the same time (You have to stay still or walk slowly to shoot accurately)
 - A basic aiming mechanic; pointing your mouse in the direction of the zombie will connect shots that vary in damage from some to more, but putting your mouse directly on top of the zombie and shooting slowly will guarantee a "precision shot" that deals enough damage for a headshot, which one-hit kills zombies. You will have to fire no more than a burst at a time for this to work, though. You can't just spray down a whole room of zombies in fully-automatic fire and expect every shot to be a precision shot because you put your mouse on top of them.
