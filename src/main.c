@@ -42,12 +42,12 @@ int main()
   {
     float deltaTime = GetFrameTime();
     //update inputs
-    if(IsKeyDown(KEY_DOWN)){printf("Moving down ... "); masterson.input.y = 1;}
-    else if(IsKeyDown(KEY_UP)){masterson.input.y = -1;}
+    if(IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)){printf("Moving down ... "); masterson.input.y = 1;}
+    else if(IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)){masterson.input.y = -1;}
     else{masterson.input.y = 0;}
     
-    if(IsKeyDown(KEY_LEFT)){masterson.input.x = -1;}
-    else if(IsKeyDown(KEY_RIGHT)){masterson.input.x = 1;}
+    if(IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A)){masterson.input.x = -1;}
+    else if(IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)){masterson.input.x = 1;}
     else{masterson.input.x = 0;}
 
     
@@ -68,7 +68,7 @@ int main()
       DrawText(tempstr, 20, 20 + textSize, textSize, LIGHTGRAY);
       
       //masterson
-      DrawCircle(masterson.being.position.x, masterson.being.position.y, 25, ORANGE);
+      DrawPlayer(&masterson);
     EndDrawing();
     printf("Player position is %f, %f\n", masterson.being.position.x, masterson.being.position.y);
     printf("Player velocity is %f, %f\n", masterson.being.velocity.x, masterson.being.velocity.y);

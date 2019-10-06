@@ -23,6 +23,6 @@ int kills;
 } player;
 
 void UpdatePlayer(player * p, float dt);
-
+void DrawPlayer(player * p);
 #include "player.c"
 #endif
