@@ -8,8 +8,8 @@ void UpdateCreature(creature * c, float dt)
   //if velocity is too small to be noticeable, set it to 0 to make further calculations easier and faster
   //without this, objects may twitch as they get so small that friction forces them to switch between positive and negative
   
-  if (c->acceleration.x == 0){c->acceleration.x = -300 * mathSignF(c->velocity.x);}
-  if (c->acceleration.y == 0){c->acceleration.y = -300 * mathSignF(c->velocity.y);} //basic friction, for if there's no acceleration but there is velocity
+  if (c->acceleration.x == 0){c->acceleration.x = -500 * mathSignF(c->velocity.x);}
+  if (c->acceleration.y == 0){c->acceleration.y = -500 * mathSignF(c->velocity.y);} //basic friction, for if there's no acceleration but there is velocity
 
   c->velocity.x += c->acceleration.x * dt;
   c->velocity.y += c->acceleration.y * dt; //modify velocity by acceleration

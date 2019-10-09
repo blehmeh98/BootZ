@@ -19,6 +19,7 @@ void DamageCreature(creature * c, int d, double dir, float knockback);
 
 #include "player.h"
 #include "../ineedit.h"
+#include "environment.h"
 
 #include "master.c"
 #endif
