@@ -34,11 +34,11 @@ int main()
   masterson.input.sprint = 0;
   masterson.input.reload = 0;
   
-  masterson.accelerationSpeed = 850;
+  masterson.accelerationSpeed = 850; //850
   masterson.kills = 0;
   masterson.score = 0;
   
-  rectWall dw;
+  wallLine dw;
   dw.b = (Vector2){screenWidth/2, screenHeight*3/4};
   dw.a = (Vector2){screenWidth/7, screenHeight/2};
   
@@ -54,10 +54,14 @@ int main()
     else if(IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)){masterson.input.x = 1;}
     else{masterson.input.x = 0;}
 
-    
-    UpdatePlayer(&masterson, deltaTime);
+    UpdatePlayer(&masterson, deltaTime, &dw);
     int textSize = (screenWidth * screenHeight)/(10*(screenWidth+screenHeight));
     
+    lineEq thisle = WallLineToLineEq(&dw);
+    //int oof = CircleLineIntersectTest(masterson.being.position, (float)25.0000, thisle);
+    //char oofstr[36];  
+    //sprintf(oofstr, "player collision status: %d", oof);
+
     BeginDrawing();
       //background
       ClearBackground(RAYWHITE);
@@ -70,15 +74,17 @@ int main()
       
       
       DrawText(tempstr, 20, 20 + textSize, textSize, LIGHTGRAY);
+      //DrawText(oofstr, 20, 20 + textSize * 2, textSize, RED);
       
       //masterson
       DrawPlayer(&masterson);
       //the wall
-      DebugWallDraw(&dw);
+      DebugWallLineDraw(&dw);
     EndDrawing();
-    printf("Player position is %f, %f\n", masterson.being.position.x, masterson.being.position.y);
-    printf("Player velocity is %f, %f\n", masterson.being.velocity.x, masterson.being.velocity.y);
-    printf("Player acceleration is %f, %f\n", masterson.being.acceleration.x, masterson.being.acceleration.y);
+    
+    //printf("Player position is %f, %f\n", masterson.being.position.x, masterson.being.position.y);
+    //printf("Player velocity is %f, %f\n", masterson.being.velocity.x, masterson.being.velocity.y);
+    //printf("Player acceleration is %f, %f\n", masterson.being.acceleration.x, masterson.being.acceleration.y);
   }
   
   CloseWindow();

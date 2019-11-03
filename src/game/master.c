@@ -21,8 +21,8 @@ void UpdateCreature(creature * c, float dt)
   if (fabsf(c->velocity.y) > c->maxspeed)
   {
     c->velocity.y = c->maxspeed * mathSignF(c->velocity.y);
-
   }
+  
   c->position.x += c->velocity.x * dt;
   c->position.y += c->velocity.y * dt;  
 }

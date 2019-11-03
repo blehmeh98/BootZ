@@ -1,13 +1,20 @@
 #include "player.h"
 #include "master.h"
+#include "environment.h"
 
 #include <math.h>
 #include <raylib.h>
 
-#define MATH_PI 3.1415926535897932384626433
+#define MATH_PI 3.1415926535897932384626433 //no joke, I typed this all out from memory
 
 
-void UpdatePlayer(player * p, float dt)
+int PlayerCollideWithLines(player * p, wallLine * wl)
+{
+  lineEq le = WallLineToLineEq(wl);
+  return CircleLineIntersectTest(p->being.position, 25, le);
+}
+
+void UpdatePlayer(player * p, float dt, wallLine * wl)
 {
   p->being.acceleration.x = p->input.x * p->accelerationSpeed;
   p->being.acceleration.y = p->input.y * p->accelerationSpeed;
@@ -17,6 +24,15 @@ void UpdatePlayer(player * p, float dt)
   {
     p->being.direction = p->being.direction + MATH_PI;
   }
+  
+  player nextFramePlayer = *p;
+  UpdateCreature(&nextFramePlayer.being, dt);
+  if (PlayerCollideWithLines(&nextFramePlayer, wl) > 0)
+  {
+    p->being.velocity = (Vector2){0, 0};
+    p->being.acceleration = (Vector2){0, 0};
+  }
+  
   UpdateCreature(&p->being, dt);
 }
 
