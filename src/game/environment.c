@@ -56,3 +56,16 @@ int CircleLineIntersectTest(Vector2 cpos, float crad, lineEq le)
   }
   return 0;
 }
+
+Vector2 GetCircleLineIntPos(Vector2 cpos, float crad, lineEq le)
+{
+  Vector2 lineStartPos = (Vector2){le.x1, le.m * le.x1 + le.b};
+  Vector2 lineEndPos = (Vector2){le.x2, le.m * le.x2 + le.b};
+  
+  float xMinDist = (cpos.x + le.m * cpos.y - le.m * le.b)/(le.m * le.m + 1);
+  
+  Vector2 closestLinePoint = (Vector2){xMinDist, le.m * xMinDist + le.b};
+
+  return closestLinePoint;
+
+}

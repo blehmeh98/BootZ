@@ -30,6 +30,7 @@ lineEq WallLineToLineEq(wallLine * lw);
 
 int CircleLineIntersectTest(Vector2 cpos, float crad, lineEq le);
 
+Vector2 GetCircleLineIntPos(Vector2 cpos, float crad, lineEq le);
 
 #include "environment.c"
 #endif

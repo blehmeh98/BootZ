@@ -39,8 +39,8 @@ int main()
   masterson.score = 0;
   
   wallLine dw;
-  dw.b = (Vector2){screenWidth/2, screenHeight*3/4};
-  dw.a = (Vector2){screenWidth/7, screenHeight/2};
+  dw.b = (Vector2){screenWidth*3/4, screenHeight/2};
+  dw.a = (Vector2){screenWidth/2, screenHeight/7};
   
   while(!WindowShouldClose())
   {
