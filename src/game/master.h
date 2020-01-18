@@ -9,6 +9,8 @@ Vector2 velocity;
 Vector2 acceleration;
 double direction;
 
+float mass;
+
 int health;
 int maxhealth;
 int maxspeed;

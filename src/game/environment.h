@@ -24,7 +24,7 @@ float x2; //domain for the line equation
 void DebugWallDraw(rectWall * rw); //walls themselves are meant to be invisible
 
 void DebugWallLineDraw(wallLine * rw); //wall lines themselves are meant to be invisible
-//instead, the massive map texture should provide insight to the environment, such as where the walls are.
+//instead, the massive map texture to be drawn in the background should provide insight to the environment, such as where the walls are.
 
 lineEq WallLineToLineEq(wallLine * lw);
 

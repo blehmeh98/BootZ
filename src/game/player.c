@@ -14,6 +14,13 @@ int PlayerCollideWithLines(player * p, wallLine * wl)
   return CircleLineIntersectTest(p->being.position, 25, le);
 }
 
+void PlayerApplyForce(player * p, Vector2 force, float dt)
+{ //TODO: GIVE THE PLAYER MASS, USE MOMENTUM INSTEAD OF VELOCITY
+	double forcemag = sqrt(force.x * force.x + force.y * force.y); 
+	p->being.velocity.x += force.x * dt;
+	p->being.velocity.y += force.y * dt;
+}
+
 void UpdatePlayer(player * p, float dt, wallLine * wl)
 {
   p->being.acceleration.x = p->input.x * p->accelerationSpeed;
@@ -65,7 +72,7 @@ void UpdatePlayer(player * p, float dt, wallLine * wl)
     //As of this alpha, collision with walls is bumpy, and the bumpiness of running along a wall is unpredictable and sporadic
     //But the player cannot go through walls, and it still feels pretty nice to control, at least for now
     //More fine tuning incoming a while later
-    
+    /*
     Vector2 IntersectPos = GetCircleLineIntPos(nextFramePlayer.being.position, 25, WallLineToLineEq(wl));
     float nfpbx = nextFramePlayer.being.position.x;
     float nfpby = nextFramePlayer.being.position.y;
@@ -78,7 +85,18 @@ void UpdatePlayer(player * p, float dt, wallLine * wl)
     if (p->being.position.x > IntersectPos.x){p->being.acceleration.x += AccAdd.x * dt;}
     if (p->being.position.x < IntersectPos.x){p->being.acceleration.x -= AccAdd.x * dt;}
     if (p->being.position.y < IntersectPos.y){p->being.acceleration.y += AccAdd.y * dt;}
-    if (p->being.position.y > IntersectPos.y){p->being.acceleration.y -= AccAdd.y * dt;}
+    if (p->being.position.y > IntersectPos.y){p->being.acceleration.y -= AccAdd.y * dt;}*/
+    
+    //resolution method 4: vectors
+    //might be the least jank of them all, yet easiest to implement, at least with one wall
+    
+    Vector2 clp = GetCircleLineIntPos(nextFramePlayer.being.position, 25, WallLineToLineEq(wl));
+    Vector2 tempOof = nextFramePlayer.being.position;
+    Vector2 L = (Vector2){tempOof.x - clp.x, tempOof.y - clp.y};
+    double Lmag = sqrt(L.x * L.x + L.y * L.y);
+    Vector2 Lhat = (Vector2){L.x/Lmag, L.y/Lmag};
+    Vector2 wallPushForce = (Vector2){5000*Lhat.x/(Lmag/30), 1000*Lhat.y/(Lmag/30)};
+    PlayerApplyForce(p, wallPushForce, dt);
   }
   
   UpdateCreature(&p->being, dt);

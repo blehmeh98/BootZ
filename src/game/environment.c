@@ -29,6 +29,7 @@ lineEq WallLineToLineEq(wallLine * lw)
   return le;
 }
 
+
 int CircleLineIntersectTest(Vector2 cpos, float crad, lineEq le)
 {
   Vector2 lineStartPos = (Vector2){le.x1, le.m * le.x1 + le.b};
@@ -42,7 +43,7 @@ int CircleLineIntersectTest(Vector2 cpos, float crad, lineEq le)
   
   float xMinDist = (cpos.x + le.m * cpos.y - le.m * le.b)/(le.m * le.m + 1);
   
-  if (xMinDist < le.x1 || xMinDist > le.x2)
+  if (cpos.x + crad < le.x1 || cpos.x - crad > le.x2)
   {
     printf("Circle too far horizontally from line to collide, collision denied\n");
     return 0;
@@ -58,7 +59,9 @@ int CircleLineIntersectTest(Vector2 cpos, float crad, lineEq le)
 }
 
 Vector2 GetCircleLineIntPos(Vector2 cpos, float crad, lineEq le)
-{
+{//This function assumes the given line intersects with the given circle
+//To avoid weird behavior, check to see that they're intersecting with the other function before you try to make use of this one
+//Or, don't use it for anything to do with collision. It just returns the closest point on a line to a circle, which makes it versatile for other purposes than simple collisions.
   Vector2 lineStartPos = (Vector2){le.x1, le.m * le.x1 + le.b};
   Vector2 lineEndPos = (Vector2){le.x2, le.m * le.x2 + le.b};
   

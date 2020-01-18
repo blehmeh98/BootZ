@@ -5,8 +5,8 @@ void UpdateCreature(creature * c, float dt)
 {
   if (fabsf(c->velocity.x) < 1){c->velocity.x = 0;}
   if (fabsf(c->velocity.y) < 1){c->velocity.y = 0;} //basic velocity dampening
-  //if velocity is too small to be noticeable, set it to 0 to make further calculations easier and faster
-  //without this, objects may twitch as they get so small that friction forces them to switch between positive and negative
+  //if velocity is too small to be noticeable (< 1 game unit per second), set it to 0 to make further calculations easier and faster
+  //without this, objects may twitch as they get so small that friction forces them to switch between positive and negative values for velocity forever, wasting CPU cycles
   
   if (c->acceleration.x == 0){c->acceleration.x = -500 * mathSignF(c->velocity.x);}
   if (c->acceleration.y == 0){c->acceleration.y = -500 * mathSignF(c->velocity.y);} //basic friction, for if there's no acceleration but there is velocity
